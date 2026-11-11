@@ -1,0 +1,27 @@
+@model List<Product>
+@inject Books.Services.CartService Cart
+@{
+    ViewData["Title"] = "Shop";
+    var count = Cart.GetCart().Count;
+}
+<div class="heading">
+    <div>
+        <h1>Student supplies</h1>
+        <p>Choose your supplies and place an order.</p>
+    </div>
+    <a class="button" asp-controller="Shop" asp-action="Cart">View cart (@count)</a>
+</div>
+<div class="grid">
+    @foreach (var product in Model)
+    {
+        <article class="panel product">
+            <h2>@product.Name</h2>
+            <p>@product.Quantity in stock</p>
+            <p class="price">$@product.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)</p>
+            <form asp-controller="Shop" asp-action="Add" method="post">
+                <input type="hidden" name="id" value="@product.Id" />
+                <button type="submit" disabled="@(product.Quantity == 0)">Add to cart</button>
+            </form>
+        </article>
+    }
+</div>

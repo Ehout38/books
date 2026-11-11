@@ -1,0 +1,23 @@
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+<h1>Checkout</h1>
+<partial name="_CartItems" model="Model.Items" />
+<p class="total">Total: $@Model.Total.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)</p>
+<form asp-action="Checkout" method="post" class="panel form">
+    <div asp-validation-summary="ModelOnly" class="validation"></div>
+    <label asp-for="FullName"></label>
+    <input asp-for="FullName" required minlength="2" maxlength="100" autocomplete="name" />
+    <span asp-validation-for="FullName" class="validation"></span>
+    <label asp-for="Phone"></label>
+    <input asp-for="Phone" type="tel" required maxlength="30" autocomplete="tel" />
+    <span asp-validation-for="Phone" class="validation"></span>
+    <label asp-for="Address"></label>
+    <textarea asp-for="Address" required minlength="5" maxlength="200" autocomplete="street-address"></textarea>
+    <span asp-validation-for="Address" class="validation"></span>
+    <div class="actions">
+        <button type="submit">Place order</button>
+        <a asp-action="Cart">Back to cart</a>
+    </div>
+</form>

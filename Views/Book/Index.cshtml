@@ -1,0 +1,24 @@
+@model List<BookViewModel>
+@{
+    ViewData["Title"] = "Library";
+}
+<div class="heading">
+    <div>
+        <h1>Library</h1>
+        <p>Browse the collection or add a new book.</p>
+    </div>
+    <a class="button" asp-action="Add">Add book</a>
+</div>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Title</th><th>Author</th><th>Genre</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr><td>@book.Title</td><td>@book.Author</td><td>@book.Genre</td><td>@book.Year</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,17 @@
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Order summary";
+}
+<h1>Order confirmed</h1>
+<section class="panel">
+    <h2>Customer details</h2>
+    <dl>
+        <dt>Full name</dt><dd>@Model.FullName</dd>
+        <dt>Phone</dt><dd>@Model.Phone</dd>
+        <dt>Address</dt><dd>@Model.Address</dd>
+    </dl>
+</section>
+<h2>Your products</h2>
+<partial name="_CartItems" model="Model.Items" />
+<p class="total">Total: $@Model.Total.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)</p>
+<a class="button" asp-action="Index">Back to shop</a>

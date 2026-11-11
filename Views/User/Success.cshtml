@@ -1,0 +1,9 @@
+@model string
+@{
+    ViewData["Title"] = "Registration complete";
+}
+<section class="panel">
+    <h1>Registration complete</h1>
+    <p>Your account was created successfully, @Model.</p>
+    <a class="button" asp-controller="Shop" asp-action="Index">Go to shop</a>
+</section>

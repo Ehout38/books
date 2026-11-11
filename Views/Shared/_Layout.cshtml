@@ -1,0 +1,30 @@
+@inject Books.Services.CartService Cart
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Books</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a class="brand" asp-controller="Home" asp-action="Index">Books</a>
+            <a asp-controller="Home" asp-action="Index">Shop</a>
+            <a asp-controller="Book" asp-action="Index">Library</a>
+            <a asp-controller="Book" asp-action="Add">Add book</a>
+            <a asp-controller="User" asp-action="Register">Register</a>
+            <a class="cart-link" asp-controller="Shop" asp-action="Cart">Cart (@Cart.GetCart().Count)</a>
+        </nav>
+    </header>
+    <main class="container">
+        @if (TempData["Message"] is string message)
+        {
+            <p class="notice" role="status">@message</p>
+        }
+        @RenderBody()
+    </main>
+    <footer class="container">Books and student supplies</footer>
+</body>
+</html>

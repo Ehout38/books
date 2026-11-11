@@ -1,0 +1,19 @@
+@model List<CartItem>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>$@item.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)</td>
+                    <td>@item.Quantity</td>
+                    <td>$@item.Total.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

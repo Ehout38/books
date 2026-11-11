@@ -1,0 +1,21 @@
+@model User
+@{
+    ViewData["Title"] = "Register";
+}
+<h1>Create an account</h1>
+<form asp-action="RegisterPost" method="post" class="panel form">
+    <div asp-validation-summary="ModelOnly" class="validation"></div>
+    <label asp-for="Username"></label>
+    <input asp-for="Username" required minlength="3" maxlength="30" autocomplete="username" />
+    <span asp-validation-for="Username" class="validation"></span>
+    <label asp-for="Email"></label>
+    <input asp-for="Email" type="email" required maxlength="100" autocomplete="email" />
+    <span asp-validation-for="Email" class="validation"></span>
+    <label asp-for="Password"></label>
+    <input type="password" id="Password" name="Password" required minlength="8" maxlength="100" autocomplete="new-password" />
+    <span asp-validation-for="Password" class="validation"></span>
+    <label asp-for="Age"></label>
+    <input asp-for="Age" type="number" required min="13" max="120" />
+    <span asp-validation-for="Age" class="validation"></span>
+    <button type="submit">Register</button>
+</form>
